@@ -2,8 +2,6 @@
 
 # Solutions
 
-
-
 ### 1. What is the total amount each customer spent at the restaurant?
 ``` sql
 SELECT s.customer_id, SUM(m.price) AS total_amount_per_customer
@@ -15,9 +13,7 @@ GROUP BY s.customer_id;
 | B           | 74                        |
 | C           | 36                        |
 | A           | 76                        |
-
-
-
+---
 ###  2. How many days has each customer visited the restaurant?
 ``` sql
     SELECT s.customer_id, COUNT(DISTINCT s.order_date) AS Days_visited 
@@ -98,7 +94,7 @@ GROUP BY s.customer_id;
 | B           | sushi        |
 
 ---
-### 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+### 8. What is the total items and amount spent for each member before they became a member?
 ``` sql
     SELECT s.customer_id, COUNT(m.product_id) AS total_items, SUM(m.price) AS total_amount
     FROM dannys_diner.sales AS s 
@@ -113,7 +109,7 @@ GROUP BY s.customer_id;
 | A           | 2           | 25           |
 
 ---
-### 8. What is the total items and amount spent for each member before they became a member?
+### 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 ``` sql
     SELECT s.customer_id, SUM(CASE WHEN m.product_id = 1 THEN m.price*20 ELSE m.price*10 END) AS points
     FROM dannys_diner.sales AS s JOIN dannys_diner.menu AS m ON s.product_id = m.product_id
