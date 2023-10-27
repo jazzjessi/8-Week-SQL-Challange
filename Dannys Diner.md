@@ -141,9 +141,10 @@ GROUP BY s.customer_id;
 | B           | 940    |
 
 ---
-### BONUS
+### BONUS - Join All The Things
 ``` sql
-    SELECT customer_id, order_date, product_name, price, CASE WHEN order_date < join_date OR join_date IS null THEN 'N' ELSE 'Y' END AS member
+    SELECT customer_id, order_date, product_name, price,
+        CASE WHEN order_date < join_date OR join_date IS null THEN 'N' ELSE 'Y' END AS member
     FROM dannys_diner.sales  
     JOIN dannys_diner.menu  USING(product_id)
     LEFT JOIN dannys_diner.members  USING(customer_id)
